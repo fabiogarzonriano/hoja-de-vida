@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta tag necesario para solucionar el Error 153 -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>CV - FABIO LEONARDO GARZON RIAÑO</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #555;
+            display: flex;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            padding: 20px 0;
+        }
+
+        .pdf-page {
+            width: 210mm;
+            height: 297mm;
+            background-color: #ffffff;
+            display: flex;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .col-left {
+            width: 35%;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 15mm 10mm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .photo-box {
+            width: 40mm;
+            height: 40mm;
+            border-radius: 50%;
+            background-color: #333;
+            margin: 0 auto 10mm auto;
+            overflow: hidden;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-title-left {
+            font-size: 14pt;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 5mm;
+            border-bottom: 1px solid #555;
+            padding-bottom: 2mm;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .left-text {
+            font-size: 10pt;
+            margin-bottom: 4mm;
+            color: #cccccc;
+            line-height: 1.4;
+        }
+
+        .left-text a {
+            color: #cccccc;
+            text-decoration: none;
+        }
+
+        .contact-item {
+            margin-bottom: 3mm;
+        }
+
+        .edu-item {
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 4mm;
+        }
+
+        .edu-title {
+            font-size: 10pt;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .edu-date {
+            font-size: 9pt;
+            color: #aaaaaa;
+            margin-bottom: 1mm;
+        }
+
+        .popup-edu {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 220px;
+            background-color: #333;
+            border: 1px solid #666;
+            padding: 8px;
+            font-size: 9pt;
+            color: #fff;
+            z-index: 10;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .edu-item:hover .popup-edu {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .col-right {
+            width: 65%;
+            padding: 15mm 15mm;
+            display: flex;
+            flex-direction: column;
+            color: #000000;
+        }
+
+        .header-name {
+            font-size: 28pt;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 2mm;
+            letter-spacing: 2px;
+            color: #000000;
+        }
+
+        .header-title {
+            font-size: 11pt;
+            letter-spacing: 4px;
+            color: #666666;
+            margin-bottom: 10mm;
+        }
+
+        .section-title-right {
+            font-size: 14pt;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 4mm;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 2mm;
+            letter-spacing: 1px;
+            color: #000000;
+        }
+
+        .paragraph {
+            font-size: 10pt;
+            line-height: 1.5;
+            color: #333333;
+            margin-bottom: 8mm;
+            text-align: justify;
+        }
+
+        .job-block {
+            margin-bottom: 6mm;
+        }
+
+        .job-title {
+            font-size: 11pt;
+            font-weight: bold;
+            margin-bottom: 1mm;
+            color: #000000;
+        }
+
+        .job-company {
+            font-size: 10pt;
+            font-style: italic;
+            color: #555555;
+            margin-bottom: 2mm;
+        }
+
+        .project-block {
+            margin-bottom: 6mm;
+        }
+
+        .project-title {
+            font-size: 11pt;
+            font-weight: bold;
+            margin-bottom: 1mm;
+            color: #000000;
+        }
+
+        .project-tech {
+            font-size: 9pt;
+            color: #555555;
+            margin-bottom: 2mm;
+        }
+
+        .interactive-link {
+            color: #0056b3;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .interactive-link:hover {
+            text-decoration: underline;
+        }
+
+        .popup-video {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 125%;
+            left: 0;
+            width: 260px;
+            height: 146px;
+            background-color: #000;
+            border: 2px solid #0056b3;
+            padding: 0;
+            z-index: 10;
+            transition: opacity 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            border-radius: 4px;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .interactive-link:hover .popup-video {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-video iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="pdf-page">
+
+        <div class="col-left">
+
+            <div class="photo-box">
+                <img src="foto.jpg" alt="Foto FABIO">
+            </div>
+
+            <div class="section-title-left">Contacto</div>
+
+            <div class="left-text contact-item">
+                <a href="mailto:garzon.hxc@hotmail.com?subject=Contacto%20-%20Hoja%20de%20Vida%20Fabio%20Garzon">
+                    garzon.hxc@hotmail.com
+                </a>
+            </div>
+
+            <div class="left-text contact-item">
+                <a href="https://wa.me/573238006628?text=Hola%20Fabio,%20he%20visto%20tu%20hoja%20de%20vida%20y%20me%20gustaría%20contactarte."
+                    target="_blank">
+                    3238006628
+                </a>
+            </div>
+            <div class="left-text contact-item">Bogotá, Colombia</div> 
+            <div class="left-text contact-item"><a href="https://github.com/leonardogarzon22"
+                    target="_blank">Repositorio GitHub</a></div> 
+
+            <div style="margin-top: 5mm;"></div>
+
+            <div class="section-title-left">Idiomas</div> 
+            <div class="left-text">Español Nativo</div> 
+            <div class="left-text">Inglés Nivel Medio</div> 
+
+            <div style="margin-top: 5mm;"></div>
+
+            <div class="section-title-left">Formación</div> 
+
+            <div class="edu-item">
+                <div class="edu-title">SENA - Análisis y Desarrollo de Software</div> 
+                <div class="edu-date">2025 - En curso</div> 
+                <div class="popup-edu">Arquitectura backend, integración de APIs y despliegue de software.</div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-title">SENA - Algoritmo de agrupamiento no supervisado K-means con Python</div>
+                <div class="edu-date">2026 - En curso</div> 
+                <div class="popup-edu">Cálculo estadístico y modelos matemáticos orientados a datos.</div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-title">Politécnico Superior de Colombia - Diplomado en Agentes de IA y automatizaciones con N8N</div> 
+                <div class="edu-date">2026 - 2026</div> 
+                <div class="popup-edu">Integración de modelos generativos y flujos automatizados.</div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-title">Politécnico de Colombia - Diplomado en programación de PHP</div> 
+                <div class="edu-date">2026 - 2026</div> 
+                <div class="popup-edu">Desarrollo de lógica en servidor y bases de datos relacionales.</div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-title">Colsubsidio - Curso en Fundamentos de lenguajes de programación</div>
+                <div class="edu-date">2025 - 2025</div> 
+                <div class="popup-edu">Bases algorítmicas y estructuras de control lógico.</div>
+            </div>
+
+        </div>
+
+        <div class="col-right">
+
+            <div class="header-name">FABIO LEONARDO<br>GARZON RIAÑO</div>
+            <div class="header-title">DESARROLLO &nbsp; DE &nbsp; SOFTWARE</div> 
+
+            <div class="section-title-right">Perfil Personal</div> 
+            <div class="paragraph">
+                Desarrollador Backend con experiencia comprobada desplegando aplicaciones en producción, domino Python
+                (FastAPI), Node.js, PostgreSQL y MongoDB, automatizo procesos de datos, análisis estadísticos y
+                reportes, además integro APIs de IA y despliego en Render/Vercel. 
+            </div>
+
+            <div class="section-title-right">Experiencia Laboral</div> 
+            <div class="job-block">
+                <div class="job-title">DESARROLLADOR DE SOFTWARE / ANALISTA</div> 
+                <div class="job-company">SGI SAS (Febrero 2022 - Actualidad)</div> 
+                <div class="paragraph" style="margin-bottom: 0;">
+                    Lideré el desarrollo y despliegue de aplicaciones web (FastAPI, PostgreSQL, JS) y scripts en Python
+                    para la digitalización de laboratorio. Implementé SafeLabel para etiquetado automático, un sistema
+                    de informes de validación analítica y flujos de migración y tratamiento de datos, optimizando la
+                    eficiencia operativa.
+                </div>
+            </div>
+
+            <div class="section-title-right" style="margin-top: 4mm;">Proyectos Destacados</div> 
+
+            <!-- PROYECTO SAFELABEL -->
+            <div class="project-block">
+                <div class="project-title">SAFELABEL</div> 
+                <div class="project-tech">Node.js (Backend), HTML, CSS, JavaScript (Frontend).</div> 
+
+                <a href="https://safelabel.onrender.com/" target="_blank" class="interactive-link">
+                    https://safelabel.onrender.com/ 
+                    <div class="popup-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/Cz3DGwWmiug?autoplay=1&mute=1&loop=1&playlist=Cz3DGwWmiug&controls=0" 
+                                title="Demo SafeLabel" 
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allow="autoplay; encrypted-media"></iframe>
+                    </div>
+                </a>
+
+                <div class="paragraph" style="margin-top: 2mm; margin-bottom: 0;">
+                    Digitalización y estandarización del proceso de etiquetado en el laboratorio, garantizando el 100%
+                    de cumplimiento normativo en seguridad química y eliminando errores manuales en la trazabilidad.
+                </div>
+            </div>
+
+            <!-- PROYECTO CRITERIO AI -->
+            <div class="project-block">
+                <div class="project-title">CRITERIO AI</div>
+                <div class="project-tech">Backend en Python (FastAPI, LangChain, Gemini API) con SAST (Bandit) y frontend en JS/Tailwind, alojado en Render.</div>
+
+                <a href="https://criterio-ai-00qc.onrender.com/" target="_blank" class="interactive-link">
+                    https://criterio-ai-00qc.onrender.com/
+                    <div class="popup-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/9YjXyK7aOag?autoplay=1&mute=1&loop=1&playlist=9YjXyK7aOag&controls=0" 
+                                title="Demo Criterio AI" 
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allow="autoplay; encrypted-media"></iframe>
+                    </div>
+                </a>
+
+                <div class="paragraph" style="margin-top: 2mm; margin-bottom: 0;">
+                    Motor de auditoría AppSec que analiza código políglota bajo el estándar OWASP Top 10. Mediante un
+                    flujo multiagente de IA, detecta vulnerabilidades, simula vectores de ataque en tiempo real y genera
+                    parches de código corregidos y validados automáticamente.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
